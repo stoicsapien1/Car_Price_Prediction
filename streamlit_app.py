@@ -66,6 +66,7 @@ date_time=datetime.datetime.now()
 years=st.number_input("[7] In which year Car was purchased?",1990,date_time.year)
 p7=date_time.year-years
 algo=st.radio('[8] Pick a Machine Learning Model', options=['Random Forest Regressor', 'Gradient Boosting Regressor',"XGBoost Regressor"])
+st.write("My XGBoost is giving the best predictions <3")
 if algo=="Linear Regression":
     model=model1
 elif algo=="Random Forest Regressor":
