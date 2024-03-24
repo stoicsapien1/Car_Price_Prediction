@@ -5,7 +5,12 @@ import sklearn
 from sklearn.ensemble import GradientBoostingRegressor as xgb
 import pickle
 import joblib
-model = joblib.load("Car_Price_Predictor")
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+
+model2= joblib.load("Car_rf")
+model3=joblib.load("Car_gradient")
+model4=joblib.load("Car_xg")
 
 st.markdown("""
     <div style="display: flex; justify-content: center;">
@@ -36,7 +41,7 @@ st.write('''Are you planning to sell your car? 🚗
 
 Are you worried about its resale value? Then you can use this web app to find out its resale value!''')
 st.write(" ")
-p1=st.number_input("[1] What is the ex-showroom price of the Car(In Lakhs)",2.5,25.0,step=1.0)
+p1=st.number_input("[1] What is the ex-showroom proce of the Car(In Lakhs)",2.5,25.0,step=1.0)
 p2=st.number_input("[2] What is distance completed by Car in kilometers?",100,100000,step=100)
 s1=st.radio('[3] What is the Fuel-Type?', options=['Petrol', 'Diesel', 'CNG'], 
           horizontal=True)
@@ -60,17 +65,26 @@ p6=st.slider("[6] Number of owners the car previolusly had?",0,3)
 date_time=datetime.datetime.now()
 years=st.number_input("[7] In which year Car was purchased?",1990,date_time.year)
 p7=date_time.year-years
-
+algo=st.radio('[8] Pick a Machine Learning Model', options=['Random Forest Regressor', 'Gradient Boosting Regressor',"XGBoost Regressor"])
+if algo=="Linear Regression":
+    model=model1
+elif algo=="Random Forest Regressor":
+    model=model2
+elif algo=="Gradient Boosting Regressor":
+    model=model3
+elif algo=="XGBoost Regressor":
+    model=model4
 
 def predict_price(p1, p2, p3, p4, p5, p6, p7):
     input_features = [[p1, p2, p3, p4, p5, p6, p7]]
     prediction = model.predict(input_features)
     return round(prediction[0],2)
 
-# Add Predict button
+
 if st.button('Predict'):
     predicted_price = predict_price(p1, p2, p3, p4, p5, p6, p7)
-    st.write(f"Predicted car price (in Lakhs): {predicted_price}")
+    st.write(f"Predicted car price (in Lakhs): ₹{predicted_price:.2f}")
+
 st.write(" ")
 st.write(" ")
 st.write("Made with ❤️ by Belal Ahmed Siddiqui")
