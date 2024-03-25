@@ -22,7 +22,6 @@ st.markdown("""
 
 image_url = "https://i.postimg.cc/NGTfM6Rn/Car-pic.jpg"
 
-# Center the image using CSS
 st.markdown(
     f'<div style="display: flex; justify-content: center;">'
     f'<img src="{image_url}" width="200" style="max-width:50%;">'
