@@ -62,7 +62,7 @@ elif s3=="Automatic":
     p5=1
 p6=st.slider("[6] Number of owners the car previolusly had?",0,3)
 date_time=datetime.datetime.now()
-years=st.number_input("[7] In which year Car was purchased?",1990,date_time.year)
+years=st.number_input("[7] In which year Car was purchased?",date_time.year,1990,step=-1)
 p7=date_time.year-years
 algo=st.radio('[8] Pick a Machine Learning Model', options=['Random Forest Regressor', 'Gradient Boosting Regressor',"XGBoost Regressor"])
 st.write("My XGBoost is giving the best predictions <3")
