@@ -41,7 +41,7 @@ st.write('''Are you planning to sell your car? 🚗
 Are you worried about its resale value? Then you can use this web app to find out its resale value!''')
 st.write(" ")
 p1=st.number_input("[1] What is the ex-showroom proce of the Car(In Lakhs)",2.5,25.0,step=1.0)
-p2=st.number_input("[2] What is distance completed by Car in kilometers?",1000,100000,step=100)
+p2=st.number_input("[2] What is distance completed by Car in kilometers?",100,100000,step=100)
 s1=st.radio('[3] What is the Fuel-Type?', options=['Petrol', 'Diesel', 'CNG'], 
           horizontal=True)
 if s1=="Petrol":
@@ -62,10 +62,9 @@ elif s3=="Automatic":
     p5=1
 p6=st.slider("[6] Number of owners the car previolusly had?",0,3)
 date_time=datetime.datetime.now()
-years=st.number_input("[7] In which year Car was purchased?",date_time.year,1990,step=-1)
+years=st.number_input("[7] In which year Car was purchased?",1990,date_time.year)
 p7=date_time.year-years
 algo=st.radio('[8] Pick a Machine Learning Model', options=['Random Forest Regressor', 'Gradient Boosting Regressor',"XGBoost Regressor"])
-st.write("My XGBoost is giving the best predictions <3")
 if algo=="Linear Regression":
     model=model1
 elif algo=="Random Forest Regressor":
