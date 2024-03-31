@@ -41,7 +41,7 @@ st.write('''Are you planning to sell your car? 🚗
 Are you worried about its resale value? Then you can use this web app to find out its resale value!''')
 st.write(" ")
 p1=st.number_input("[1] What is the ex-showroom proce of the Car(In Lakhs)",2.5,25.0,step=1.0)
-p2=st.number_input("[2] What is distance completed by Car in kilometers?",100,100000,step=100)
+p2=st.number_input("[2] What is distance completed by Car in kilometers?",1000,100000,step=100)
 s1=st.radio('[3] What is the Fuel-Type?', options=['Petrol', 'Diesel', 'CNG'], 
           horizontal=True)
 if s1=="Petrol":
